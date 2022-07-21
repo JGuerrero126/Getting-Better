@@ -2,4 +2,15 @@
 // If a element in the original array is even, the element at the same index in the new array should be double the original element
 // If an element in the original array is odd, the element at the same index of the new array should be triple the original element
 
-var doubleTripleMap = function(arr) {};
+var doubleTripleMap = function (arr) {
+  var newArr = [];
+  arr.forEach((element) => {
+    if (element % 2 === 0) {
+      newArr.push(element * 2);
+    } else {
+      newArr.push(element * 3);
+    }
+  });
+
+  return newArr;
+};
