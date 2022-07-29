@@ -1,32 +1,21 @@
-// Write code to create a function that accepts a string and returns an object containing the number of times each character appears in the string
+// This function returns an object of every unique character in a string with values indicating how many times that character appeared in the string.
 
 var characterCount = function (str) {
-  // var obj = {};
-  // var splitStr = str.split("");
-  // for (i = 0; i < splitStr.length; i++) {
-  //   var letter = splitStr[i];
-  //   var keys = Object.keys(obj);
-  //   if (keys.length < 1) {
-  //     obj[letter] = 1;
-  //   }
-  //   for (j = 0; j < keys.length; j++) {
-  //     if (letter === keys[j]) {
-  //       console.log("DUPLICATE CAUGHT");
-  //       var values = Object.values(obj);
-  //       obj[letter] = values[j] + 1;
-  //       console.log(obj[letter]);
-  //       break;
-  //     }
-  //     obj[letter] = 1;
-  //     console.log(obj);
-  //   }
-  // }
-  // return obj;
-
-  // This solution isn't mine, but it works and I don't know why. Gonna leave it like this for now and come back to try to make sense of it later.
-  // Credit: https://www.codegrepper.com/code-examples/javascript/count+number+of+chars+in+string+javascript
-  return str.split("").reduce((total, letter) => {
-    total[letter] ? total[letter]++ : (total[letter] = 1);
-    return total;
-  }, {});
+  // First we set up an empty object that will contain the characters from the given string with values indicating how many times they appear in the string.
+  var obj = {};
+  // We split the given string into an array where each character in the string is an element in the new array.
+  var splitStr = str.split("");
+  // This checks every element in the array we just made
+  splitStr.forEach((element) => {
+    // Here we are checking if the obj we created at the start of the function contains any properties that match the current element being checked.
+    if (Object.hasOwn(obj, element)) {
+      // If a match is found, increment the value pair of that property by one.
+      obj[element]++;
+    } else {
+      // If no match is found, add that element to the object as a property with a default value of one.
+      obj[element] = 1;
+    }
+  });
+  // Return the object with all the unique characters from the string with values indicating how many times they appear in the string.
+  return obj;
 };
